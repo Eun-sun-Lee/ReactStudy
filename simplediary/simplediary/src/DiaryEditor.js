@@ -29,7 +29,12 @@ const DiaryEditor = ({onCreate}) => {
         }
         onCreate(state.author, state.content, state.emotion);
         alert("저장 성공");
-    }
+        setState({
+            author:"",
+            content:"",
+            emotion:1,
+        });
+    };
 
     return (
     <div className="DiaryEditor">
