@@ -28,9 +28,16 @@ import {useRef,useState} from "react";
 //   },
 // ];
 
+//https://jsonplaceholder.typicode.com/comments
+
 function App() {
   const [data,setData]=useState([]);
   const dataId=useRef(0);
+
+  const getData = async()=>{
+    const res=await fetch('https://jsonplaceholder.typicode.com/comments').then((res)=>res.json());
+    console.log(res);
+  }
 
   const onCreate=(author, content, emotion)=> {//일기 데이터 추가할 수 있는 함수
     const created_date=new Date().getTime();
