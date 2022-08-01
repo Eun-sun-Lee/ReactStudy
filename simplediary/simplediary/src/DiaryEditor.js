@@ -1,7 +1,5 @@
 import {useRef, useState} from "react";
 
-
-
 const DiaryEditor = ({onCreate}) => {
     const authorInput=useRef();
     const contentInput=useRef();
