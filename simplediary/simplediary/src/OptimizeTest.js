@@ -1,34 +1,52 @@
 import React, {useState,useEffect} from 'react';
 
-const TextView=React.memo(({text})=>{
+const CounterA = React.memo(({count})=>{
+
     useEffect(()=>{
-        console.log('Update :: Text : ${text}');
+        console.log('CounterA update - count : ${count}');
     });
-    return <div>{text}</div>
+
+    return <div>{count}</div>;
 });
 
-const CountView = React.memo(({count})=>{
+const CounterB = React.memo(({obj})=>{
+
     useEffect(()=>{
-        console.log('Update :: Count : ${count}');
+        console.log('CounterB update - count : ${obj.count}');
     });
-    return <div>{count}</div>
-}) ;
+    return <div>{obj.count}</div>;
+}); //자식 컴포넌트
+
+const areEqual=(prevProps,nextProps)=>{
+    return prevProps.obj.count==nextProps.obj.count;
+    //return true - > 이전 프롭스 현재 프롭스가 같다 - > 리렌더링을 일으키지 않게 됨
+    //return false - > 이전과 현재가 다르다 - > 리렌더링을 일으키게 됨
+}
+
+const MemorizedCounterB = React.memo(CounterB,areEqual);
 
 const OptimizeTest = () => {
 
     const [count,setCount]=useState(1);
-    const [text,setText]=useState("");
-    return <div style={{padding:50}}>
-        <div>
-            <h2>count</h2>
-            <CountView count = {count}/>
-            <button onClick={()=>setCount(count+1)}>+</button>
+    const [obj,setObj]=useState({
+        count : 1
+    })
+    return (
+        <div style={{padding : 50}}>
+            <div>
+                <h2>Counter A</h2>
+                <CounterA count={count}/>
+                <button onClick={()=>setCount(count)}>A button</button>
+            </div>
+            <div>
+                <h2>Counter B</h2>
+                <MemorizedCounterB obj={obj}/>
+                <button onClick={()=>setObj({
+                    count:obj.count
+                })}>B Button</button>
+            </div>
+
         </div>
-        <div>
-            <h2>text</h2>
-            <TextView text={text}/>
-            <input value={text} onChange={(e)=>setText(e.target.value)}/>
-        </div>
-    </div>
-}
+    );
+};
 export default OptimizeTest;
