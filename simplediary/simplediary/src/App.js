@@ -1,8 +1,7 @@
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
-import {useMemo, useEffect, useRef,useState} from "react";
-import OptimizeTest from "./OptimizeTest";
+import {useMemo, useEffect, useRef,useState, useCallback} from "react";
 
 // const dummyList=[
 //   {
@@ -52,7 +51,7 @@ function App() {
     getData();
   },[])
 
-  const onCreate=(author, content, emotion)=> {//일기 데이터 추가할 수 있는 함수
+  const onCreate=useCallback((author, content, emotion)=> {//일기 데이터 추가할 수 있는 함수
     const created_date=new Date().getTime();
     const newItem={
       author,
@@ -62,9 +61,10 @@ function App() {
       id:dataId.current,
     };
     dataId.current+=1;
-    setData([...data,newItem]);
+    setData((data)=>[newItem,...data]); //함수형 update, dependency 배열을 비워도 항상 최신의 값 유지 가능
+    //setState에 callback 함수 전달
 
-  };
+  },[]);
   const onRemove =(targetId)=>{
     const newDiaryList=data.filter((it)=>it.id!=targetId);
     setData(newDiaryList);
@@ -91,7 +91,6 @@ function App() {
 
   return (
     <div className="App">
-      <OptimizeTest />
       <DiaryEditor onCreate={onCreate}/>
       <div> 전체 일기 : {data.length}</div>
       <div>기분 좋은 일기 개수 : {goodCount}</div>
