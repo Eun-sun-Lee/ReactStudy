@@ -1,7 +1,7 @@
 import "./App.css";
 import DiaryEditor from "./DiaryEditor";
 import DiaryList from "./DiaryList";
-import {useMemo, useEffect, useRef,useState, useCallback} from "react";
+import {useMemo, useEffect, useRef,useReducer, useCallback} from "react";
 
 // const dummyList=[
 //   {
@@ -29,8 +29,33 @@ import {useMemo, useEffect, useRef,useState, useCallback} from "react";
 
 //https://jsonplaceholder.typicode.com/comments
 
-function App() {
-  const [data,setData]=useState([]);
+//(상태변화가 일어나기 직전의 state,어떤 상태변화가 일어나야 하는지에 대한 action 객체)
+const reducer = (state,action)=>{
+  switch(action.type){
+    case 'INIT': {
+      return action.data
+    }
+    case 'CREATE':{
+      const created_date=new Date().getTime();
+      const newItem={...action.data,created_date}
+      return [newItem,...state];
+    }
+    
+    case 'REMOVE':{
+      return state.filter((it)=>it.id!==action.targetId);
+    }
+    case 'EDIT':{
+      return state.map((it)=>it.id===action.targetId? {...it,content:action.newContent}:it);
+    }
+    default:
+    return state;
+  }
+}
+
+const App=()=> {
+  // const [data,setData]=useState([]);
+  const [data,dispatch]=useReducer(reducer,[]); //(상태변화함수, 데이터 초깃값)
+  //복잡한 컴포넌트 구조를 밖으로 분리하기 위해 useReducer 사용
   const dataId=useRef(0);
 
   const getData = async()=>{
@@ -44,7 +69,7 @@ function App() {
         id : dataId.current++,
       };
     });
-    setData(initData); 
+    dispatch({type:'INIT',data:initData})
   };
 
   useEffect(()=>{
@@ -52,29 +77,20 @@ function App() {
   },[])
 
   const onCreate=useCallback((author, content, emotion)=> {//일기 데이터 추가할 수 있는 함수
-    const created_date=new Date().getTime();
-    const newItem={
-      author,
-      content,
-      emotion,
-      created_date,
-      id:dataId.current,
-    };
-    dataId.current+=1;
-    setData((data)=>[newItem,...data]); //함수형 update, dependency 배열을 비워도 항상 최신의 값 유지 가능
+    dispatch({type:'CREATE',data:{author,content,emotion,id:dataId.current},
+  });
+  dataId.current+=1;
+    //setData((data)=>[newItem,...data]); //함수형 update, dependency 배열을 비워도 항상 최신의 값 유지 가능
     //setState에 callback 함수 전달
 
   },[]);
+
   const onRemove =useCallback((targetId)=>{
-    setData(data=>data.filter((it)=>it.id!==targetId));
+    dispatch({type:'REMOVE',targetId})
   },[]);
 
   const onEdit=useCallback((targetId,newContent)=>{
-    setData((data)=>
-      data.map((it)=>
-      it.id===targetId ? {...it,content:newContent}:it
-      )
-    );
+    dispatch({type:'EDIT',targetId,newContent})
   },[]);
 
   const getDiaryAnalysis = useMemo(()=>{
