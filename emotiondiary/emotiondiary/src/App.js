@@ -14,7 +14,7 @@ function App() {
       <Routes> {/* Routes : 바뀔 부분을 감싸줌 */}
         <Route path="/" element = {<Home />} /> {/* Route : Url 경로와 컴포넌트 mapping */}
         <Route path="/new" element = {<New />} />
-        <Route path="/diary" element= {<Diary />}/>
+        <Route path="/diary/:id" element= {<Diary />}/>
         <Route path="/edit" element = {<Edit />}/>
       </Routes>
       <RouterTest />
