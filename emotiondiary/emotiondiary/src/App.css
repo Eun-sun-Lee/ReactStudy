@@ -1,9 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
 
-.App{
-  padding : 20px;
-
-  font-family: 'Nanum Pen Script', cursive;
-  font-family: 'Yeon Sung', cursive; 
-  /* 맨 마지막 폰트 사용 */
+body {
+  background-color : #f6f6f6;
+  display : flex;
+  align-items: center; /* 세로축 기준 가운데 */
+  justify-content : center;  /* body tag 안의 요소들을 body tag를 기준으로 가운데다가 둔다 -> 가로축 기준 가운데*/
+  min-height : 100vh;  /* 실제 크기의 100%를 최소 높이로 갖겠다 */
+  margin : 0px;
+  font-family : 'Nanum Pen Script';
 }
+
+@media ( min-width : 650px) { /* 화면 크기가 650px 이상일 때만 규칙 적용 */
+  .App {
+    width : 640px;
+  }
+}
+
+@media (max-width : 650px) { /* 화면 크기가 650px 이하일 때 화면에서 90%를 차지하게 하겠다 */
+  .App {
+    width : 90vw;
+  }
+}
+
+#root {
+  background-color: white;
+  box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+}
+
+.App {
+  min-height : 100vh; /* App 컴포넌트는 화면의 100%에 차지하는 높이를 갖게 된다. */
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
