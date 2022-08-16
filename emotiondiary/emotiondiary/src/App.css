@@ -99,6 +99,41 @@ header_button {
   font-family: "Nanum Pen Script";
 }
 
+/* DiaryList */
+
+.DiaryList .menu_wrapper {
+  margin-top: 20px;
+  margin-bottom : 30px;
+
+  display : flex;
+  justify-content: space-between; /* 왼쪽 div와 오른쪽 div의 간격이 완전히 벌어짐. */
+}
+
+.DiaryList .menu_wrapper .right_col {
+  flex-grow: 1; /* right_col이 flex 부모 아래의 남은 영역의 전체의 넓이를 갖게됨. */
+}
+
+.DiaryList .menu_wrapper .right_col button{
+  width : 100%;
+}
+
+.DiaryList .ControlMenu {
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px; /* 둥글게 */
+  background-color: #ececec;
+
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-left: 20px;
+  padding-right:20px;
+
+  cursor: pointer;
+  font-family: "Nanum Pen Script";
+  font-size: 18px;
+}
+
+
 
 
 

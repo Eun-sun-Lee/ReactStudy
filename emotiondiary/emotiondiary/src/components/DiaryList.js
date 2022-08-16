@@ -15,7 +15,7 @@ const filterOptionList = [
 
 const ControlMenu = ({value, onChange, optionList})=>{
     //value : select가 선택하고 있는 값, onChange : select가 선택하는게 변화했을 때 바꿀 기능을 할 함수, optionList: select tag 안에 들어갈 옵션
-    return (<select value={value} onChange={(e)=>onChange(e.target.value)}>
+    return (<select className="ControlMenu" value={value} onChange={(e)=>onChange(e.target.value)}>
         {optionList.map((it,idx)=> (
             <option key = {idx} value = {it.value}>
                 {it.name}
@@ -52,10 +52,17 @@ const DiaryList = ({diaryList}) => {
     };
 
     return (
-        <div>
-            <ControlMenu value ={sortType} onChange={setSortType} optionList={sortOptionList}/>
-            <ControlMenu value ={filter} onChange={setFilter} optionList={filterOptionList} />
-            <MyButton type={'positive'} text={'새 일기 쓰기'} onClick={()=>navigate('/new')}/>
+        <div className="DiaryList">
+            <div className="menu_wrapper">
+                <div className="left_col">
+                <ControlMenu value ={sortType} onChange={setSortType} optionList={sortOptionList}/>
+                <ControlMenu value ={filter} onChange={setFilter} optionList={filterOptionList} />
+                </div>
+                <div className="right_col">
+                <MyButton type={'positive'} text={'새 일기 쓰기'} onClick={()=>navigate('/new')}/>
+                </div>
+            </div>
+
             {getProcessedDiaryList().map((it)=>(
                 <div key={it.id}>{it.content} {it.emotion}</div>
             ))}
