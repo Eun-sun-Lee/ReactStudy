@@ -112,7 +112,7 @@ function App() {
         <Route path="/" element = {<Home />} /> {/* Route : Url 경로와 컴포넌트 mapping */}
         <Route path="/new" element = {<New />} />
         <Route path="/diary/:id" element= {<Diary />}/>
-        <Route path="/edit" element = {<Edit />}/>
+        <Route path="/edit/:id" element = {<Edit />}/>
       </Routes>
     </div>
     </BrowserRouter>
