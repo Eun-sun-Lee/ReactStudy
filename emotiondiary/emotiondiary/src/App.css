@@ -242,6 +242,12 @@ header_button {
   padding: 20px;
 }
 
+.DiaryEditor .control_box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* 세로축에서 중앙으로 맞춰줌 */
+}
+
 /* EmotionItem */
 
 .EmotionItem {

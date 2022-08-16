@@ -1,8 +1,9 @@
 import { useNavigate } from "react-router";
-import { useState,useRef } from "react";
+import { useState,useRef,useContext } from "react";
 import MyHeader from './MyHeader';
 import MyButton from './MyButton';
 import EmotionItem from "./EmotionItem";
+import { DiaryDispatchContext } from "../App";
 
 const getStringDate = (date) => { //input-box에 default로 값 전달 위함. 
     return date.toISOString().slice(0,10); //2022-08-16
@@ -31,6 +32,16 @@ const DiaryEditor = () =>{
     const contentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
     const [content,setContent] = useState("");
 
+    const {onCreate} = useContext(DiaryDispatchContext);
+    const handleSubmit = () => {
+        if(content.length <1) {
+            contentRef.current.focus();
+            return;
+        }
+        onCreate(date,content,emotion);
+        navigate('/',{replace: true}) //'/' page로 돌아가게 option을 줌.
+    };
+
 
     return (
         <div className="DiaryEditor">
@@ -52,6 +63,12 @@ const DiaryEditor = () =>{
                     <h4>오늘의 일기</h4>
                     <div className="input box text_wrapper">
                         <textarea placeholder="오늘은 어땠나요" ref={contentRef} value={content} onChange={(e)=>setContent(e.target.value)} />
+                    </div>
+                </section>
+                <section>
+                    <div className="control_box">
+                        <MyButton text={"취소하기"} onClick={()=>navigate(-1)}/>
+                        <MyButton text={"작성완료"} type={'positive'} onClick={handleSubmit}/>
                     </div>
                 </section>
             </div>
