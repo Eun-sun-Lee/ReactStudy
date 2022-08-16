@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useNavigate } from "react-router";
+import MyButton from "./MyButton";
 
 const sortOptionList = [
     {value : "latest", name: "최신순"},
@@ -23,6 +25,7 @@ const ControlMenu = ({value, onChange, optionList})=>{
 };
 
 const DiaryList = ({diaryList}) => {
+    const navigate = useNavigate();
     const [sortType, setSortType] = useState('latest'); //정렬 기준을 저장할 state
     const [filter,setFilter] = useState("all"); //감정에 따라 일기 filtering 할 수 있는 state
 
@@ -52,6 +55,7 @@ const DiaryList = ({diaryList}) => {
         <div>
             <ControlMenu value ={sortType} onChange={setSortType} optionList={sortOptionList}/>
             <ControlMenu value ={filter} onChange={setFilter} optionList={filterOptionList} />
+            <MyButton type={'positive'} text={'새 일기 쓰기'} onClick={()=>navigate('/new')}/>
             {getProcessedDiaryList().map((it)=>(
                 <div key={it.id}>{it.content} {it.emotion}</div>
             ))}
