@@ -1,4 +1,4 @@
-import {useRef, useReducer} from "react";
+import React, {useRef, useReducer} from "react";
 import './App.css';
 import {BrowserRouter,Routes,Route} from 'react-router-dom';
 import Home from './pages/Home'
@@ -28,6 +28,8 @@ const reducer = (state,action)=>{
   }
   return newState;
 };
+
+export const DiaryStateContext = React.createContext();
 
 function App() {
 
@@ -67,9 +69,8 @@ function App() {
     });
   };
    
-
-
   return (
+    <DiaryStateContext.Provider value={data}>
     <BrowserRouter>
     <div className="App">
       <Routes> {/* Routes : 바뀔 부분을 감싸줌 */}
@@ -80,6 +81,7 @@ function App() {
       </Routes>
     </div>
     </BrowserRouter>
+    </DiaryStateContext.Provider>
   );
 }
 
