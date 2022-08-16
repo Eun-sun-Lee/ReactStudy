@@ -226,6 +226,22 @@ header_button {
   gap : 2% /* item 사이의 gap 생성 */
 }
 
+.DiaryEditor textarea {
+  font-family : "Nanum Pen Script";
+  font-size: 20px;
+
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 200px;
+  resize: vertical; /* 위아래로만 textarea 사이즈 변경 가능하게 */
+
+  border:none;
+  border-radius: 5px;
+  background-color: #ececec;
+
+  padding: 20px;
+}
+
 /* EmotionItem */
 
 .EmotionItem {

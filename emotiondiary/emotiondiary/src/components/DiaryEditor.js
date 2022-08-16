@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router";
-import { useState } from "react";
+import { useState,useRef } from "react";
 import MyHeader from './MyHeader';
 import MyButton from './MyButton';
 import EmotionItem from "./EmotionItem";
@@ -27,6 +27,10 @@ const DiaryEditor = () =>{
     const handleClickEmote= (emotion) =>{ //DiaryItem-onClick에서 전달한 emotion_id를 emotion으로 전달받음.
         setEmotion(emotion);
     }
+    
+    const contentRef=useRef(); //content를 다 작성 안했을 때 focus하기 위함.
+    const [content,setContent] = useState("");
+
 
     return (
         <div className="DiaryEditor">
@@ -42,6 +46,12 @@ const DiaryEditor = () =>{
                     <h4>오늘의 감정</h4>
                     <div className="input_box emotion_list_wrapper">
                         {emotionList.map((it)=>(<EmotionItem key={it.emotion_id} {...it} onClick={handleClickEmote} isSelected={it.emotion_id===emotion}/>))}
+                    </div>
+                </section>
+                <section>
+                    <h4>오늘의 일기</h4>
+                    <div className="input box text_wrapper">
+                        <textarea placeholder="오늘은 어땠나요" ref={contentRef} value={content} onChange={(e)=>setContent(e.target.value)} />
                     </div>
                 </section>
             </div>
