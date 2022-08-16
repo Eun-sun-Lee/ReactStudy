@@ -220,4 +220,64 @@ header_button {
   font-size: 20px;
 }
 
+.DiaryEditor .emotion_list_wrapper{
+  display: grid; /* 격자를 만들어줌*/
+  grid-template-columns: repeat(5,auto); /* 격자 5개 지정 */
+  gap : 2% /* item 사이의 gap 생성 */
+}
+
+/* EmotionItem */
+
+.EmotionItem {
+  cursor: pointer;
+
+  border-radius: 5px;
+  padding-top: 20px;
+  padding-bottom: 20px;
+
+  display: flex;
+  flex-direction: column; /* EmotionItem의 자식 요소인 img와 descript가 세로로 정렬*/
+  justify-content: center; /* column을 중심으로 세로의 중앙점을 찾아줌.*/
+  align-items: center; /* 중앙에 배치 */
+}
+
+.EmotionItem img {
+  width: 50%;
+  margin-bottom: 10px;
+}
+
+.EmotionItem span{
+  font-size: 18px;
+}
+
+.EmotionItem_off {
+  background-color: #ececec;
+}
+
+.EmotionItem_on_1 {
+  background-color: #64c964;
+  color : white;
+}
+
+.EmotionItem_on_2 {
+  background-color: #9dd772;
+  color : white;
+}
+
+.EmotionItem_on_3 {
+  background-color: #fdce17;
+  color : white;
+}
+
+.EmotionItem_on_4 {
+  background-color: #fd8446;
+  color : white;
+}
+
+.EmotionItem_on_5 {
+  background-color: #fd565f;
+  color : white;
+}
+
+
 
