@@ -358,3 +358,20 @@ header_button {
   font-size: 25px;
   color: white;
 }
+
+.DiaryPage .diary_content_wrapper {
+  width : 100%;
+  background-color: #ececec;
+  border-radius: 5px;
+  word-break: keep-all; /* 단어를 쪼개서 줄 바꾸지마라. */
+  overflow-wrap: break-word; /* text 속성이 길어질 경우 text를 끊어서 강제 줄바꿈 */
+}
+
+.DiaryPage .diary_content_wrapper p{
+  padding: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-family: "Yeon Sung";
+  font-weight: 400;
+  line-height: 2.5; /* 글자의 높이를 지정 */
+}
