@@ -1,42 +1,44 @@
-@import url('https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Pen+Script&family=Yeon+Sung&display=swap");
 
 body {
-  background-color : #f6f6f6;
-  display : flex;
+  background-color: #f6f6f6;
+  display: flex;
   align-items: center; /* 세로축 기준 가운데 */
-  justify-content : center;  /* body tag 안의 요소들을 body tag를 기준으로 가운데다가 둔다 -> 가로축 기준 가운데*/
-  min-height : 100vh;  /* 실제 크기의 100%를 최소 높이로 갖겠다 */
-  margin : 0px;
-  font-family : 'Nanum Pen Script';
+  justify-content: center; /* body tag 안의 요소들을 body tag를 기준으로 가운데다가 둔다 -> 가로축 기준 가운데*/
+  min-height: 100vh; /* 실제 크기의 100%를 최소 높이로 갖겠다 */
+  margin: 0px;
+  font-family: "Nanum Pen Script";
 }
 
-@media ( min-width : 650px) { /* 화면 크기가 650px 이상일 때만 규칙 적용 */
+@media (min-width: 650px) {
+  /* 화면 크기가 650px 이상일 때만 규칙 적용 */
   .App {
-    width : 640px;
+    width: 640px;
   }
 }
 
-@media (max-width : 650px) { /* 화면 크기가 650px 이하일 때 화면에서 90%를 차지하게 하겠다 */
+@media (max-width: 650px) {
+  /* 화면 크기가 650px 이하일 때 화면에서 90%를 차지하게 하겠다 */
   .App {
-    width : 90vw;
+    width: 90vw;
   }
 }
 
 #root {
   background-color: white;
-  box-shadow: rgba(100,100,111,0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 
 .App {
-  min-height : 100vh; /* App 컴포넌트는 화면의 100%에 차지하는 높이를 갖게 된다. */
+  min-height: 100vh; /* App 컴포넌트는 화면의 100%에 차지하는 높이를 갖게 된다. */
   padding-left: 20px;
   padding-right: 20px;
 }
 
 /* MyButton */
-.MyButton{
-  cursor : pointer; /* 손가락 모양 */
-  border : none; /* 모서리 없앰 */
+.MyButton {
+  cursor: pointer; /* 손가락 모양 */
+  border: none; /* 모서리 없앰 */
   border-radius: 5px; /* 모서리 둥글게 */
 
   padding-top: 10px;
@@ -44,29 +46,29 @@ body {
   padding-left: 20px;
   padding-right: 20px;
 
-  font-size: 18px; 
-  white-space : nowrap; /* 버튼 안의 글자가 잘려서 두줄이 되지 않게 */
+  font-size: 18px;
+  white-space: nowrap; /* 버튼 안의 글자가 잘려서 두줄이 되지 않게 */
   font-family: "Nanum Pen Script";
 }
 
 .MyButton_default {
-  background-color : #ececec;
+  background-color: #ececec;
   color: black;
 }
 
 .MyButton_positive {
-  background-color : #64c964;
+  background-color: #64c964;
   color: white;
 }
 
 .MyButton_negative {
-  background-color : #fd565f;
+  background-color: #fd565f;
   color: white;
 }
 
 /* Header */
 
-header{
+header {
   padding-top: 20px;
   padding-bottom: 20px;
 
@@ -103,9 +105,9 @@ header_button {
 
 .DiaryList .menu_wrapper {
   margin-top: 20px;
-  margin-bottom : 30px;
+  margin-bottom: 30px;
 
-  display : flex;
+  display: flex;
   justify-content: space-between; /* 왼쪽 div와 오른쪽 div의 간격이 완전히 벌어짐. */
 }
 
@@ -113,8 +115,8 @@ header_button {
   flex-grow: 1; /* right_col이 flex 부모 아래의 남은 영역의 전체의 넓이를 갖게됨. */
 }
 
-.DiaryList .menu_wrapper .right_col button{
-  width : 100%;
+.DiaryList .menu_wrapper .right_col button {
+  width: 100%;
 }
 
 .DiaryList .ControlMenu {
@@ -126,7 +128,7 @@ header_button {
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
-  padding-right:20px;
+  padding-right: 20px;
 
   cursor: pointer;
   font-family: "Nanum Pen Script";
@@ -136,14 +138,14 @@ header_button {
 /* DiaryItem */
 
 .DiaryItem {
-  padding-top : 15px;
+  padding-top: 15px;
   padding-bottom: 15px;
   border-bottom: 1px solid #e2e2e2;
-  display : flex;
+  display: flex;
   justify-content: space-between;
 }
 
-.DiaryItem .emotion_img_wrapper{
+.DiaryItem .emotion_img_wrapper {
   cursor: pointer;
   min-width: 120px;
   height: 80px;
@@ -172,62 +174,62 @@ header_button {
   width: 50%;
 }
 
-.DiaryItem .info_wrapper{
-  flex-grow:1;
+.DiaryItem .info_wrapper {
+  flex-grow: 1;
   margin-left: 20px;
-  cursor : pointer;
+  cursor: pointer;
 }
 
-.DiaryItem .diary_date{
-  font-weight : bold;
+.DiaryItem .diary_date {
+  font-weight: bold;
   font-size: 25px;
-  margin-bottom : 5px;
+  margin-bottom: 5px;
 }
 
 .DiaryItem .diary_content_preview {
-  font-size: 18px ;
+  font-size: 18px;
 }
 
 .DiaryItem .btn_wrapper {
-  min-width : 70px;
+  min-width: 70px;
 }
 
 /* DiaryEditor */
 
-.DiaryEditor{
+.DiaryEditor {
 }
 
-.DiaryEditor section{
-  margin-bottom : 40px;
+.DiaryEditor section {
+  margin-bottom: 40px;
 }
 
 .DiaryEditor h4 {
   font-size: 22px;
-  font-weight : bold;
+  font-weight: bold;
 }
 
-.DiaryEditor .input_date{
-  border:none;
+.DiaryEditor .input_date {
+  border: none;
   border-radius: 5px;
   background-color: #ececec;
   padding-top: 10px;
   padding-bottom: 10px;
   padding-left: 20px;
   padding-right: 20px;
-  
+
   cursor: pointer;
   font-family: "Nanum Pen Script";
   font-size: 20px;
 }
 
-.DiaryEditor .emotion_list_wrapper{
+.DiaryEditor .emotion_list_wrapper {
   display: grid; /* 격자를 만들어줌*/
-  grid-template-columns: repeat(5,auto); /* 격자 5개 지정 */
-  gap : 2% /* item 사이의 gap 생성 */
+  grid-template-columns: repeat(5, auto); /* 격자 5개 지정 */
+  gap: 2%; /* item 사이의 gap 생성 */
 }
 
 .DiaryEditor textarea {
-  font-family : "Nanum Pen Script";
+  font-family: "Nanum Pen Script";
   font-size: 20px;
 
   box-sizing: border-box;
@@ -235,14 +237,14 @@ header_button {
   min-height: 200px;
   resize: vertical; /* 위아래로만 textarea 사이즈 변경 가능하게 */
 
-  border:none;
+  border: none;
   border-radius: 5px;
   background-color: #ececec;
 
   padding: 20px;
 }
 
-.DiaryEditor .control_box{
+.DiaryEditor .control_box {
   display: flex;
   justify-content: space-between;
   align-items: center; /* 세로축에서 중앙으로 맞춰줌 */
@@ -268,7 +270,7 @@ header_button {
   margin-bottom: 10px;
 }
 
-.EmotionItem span{
+.EmotionItem span {
   font-size: 18px;
 }
 
@@ -278,28 +280,81 @@ header_button {
 
 .EmotionItem_on_1 {
   background-color: #64c964;
-  color : white;
+  color: white;
 }
 
 .EmotionItem_on_2 {
   background-color: #9dd772;
-  color : white;
+  color: white;
 }
 
 .EmotionItem_on_3 {
   background-color: #fdce17;
-  color : white;
+  color: white;
 }
 
 .EmotionItem_on_4 {
   background-color: #fd8446;
-  color : white;
+  color: white;
 }
 
 .EmotionItem_on_5 {
   background-color: #fd565f;
-  color : white;
+  color: white;
 }
 
+/* Diary */
 
+.DiaryPage {
+}
 
+.DiaryPage section {
+  width: 100%; /* 중앙으로 정렬하기 위함. */
+  margin-bottom: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.DiaryPage h4 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.DiaryPage .diary_img_wrapper {
+  background-color: #ececec;
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around; /* 밑에 emotion_descript와 적당한 간격을 두면서 띄워줌 */
+}
+
+.DiaryPage .diary_img_wrapper_1 {
+  background-color: #64c964;
+}
+
+.DiaryPage .diary_img_wrapper_2 {
+  background-color: #9dd772;
+}
+
+.DiaryPage .diary_img_wrapper_3 {
+  background-color: #fdce17;
+}
+
+.DiaryPage .diary_img_wrapper_4 {
+  background-color: #fd8446;
+}
+
+.DiaryPage .diary_img_wrapper_5 {
+  background-color: #fd565f;
+}
+
+.DiaryPage .emotion_descript {
+  font-size: 25px;
+  color: white;
+}
