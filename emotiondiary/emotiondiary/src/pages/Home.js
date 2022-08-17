@@ -25,7 +25,10 @@ const Home = () => {
             const lastDay = new Date(
                 curDate.getFullYear(),
                 curDate.getMonth()+1,
-                0
+                0,
+                23,
+                59,
+                59 //시분초까지 영향을 미침.
             ).getTime();
 
             setData(diaryList.filter((it)=> firstDay <= it.date && it.date <= lastDay));    
